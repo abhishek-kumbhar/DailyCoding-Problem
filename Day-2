@@ -1,0 +1,32 @@
+/*
+This problem was asked by Uber.
+Given an array of integers, return a new array such that each element at index i of
+the new array is the product of all the numbers in the original array except the one
+at i.
+For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60,
+40, 30, 24]. If our input was [3, 2, 1], the expected output would be [2, 3, 6].
+*/
+
+#include <stdio.h>
+
+void main () {
+    int arr[10] = {1, 2, 3, 4, 5};
+    int arr2[10];
+    int k;
+
+    for (int i = 0; i < 5; i++) {
+        k = 1;
+        for (int j = 0; j < 5; j++) {
+            if (j != i) {
+              k *= arr[j];  
+            } else {
+                continue;
+            }
+        }
+        arr2[i] = k;
+    }
+
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", arr2[i]);
+    }
+}
