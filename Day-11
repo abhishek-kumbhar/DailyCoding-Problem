@@ -1,0 +1,36 @@
+/*
+This problem was asked by Twitter.
+Implement an autocomplete system. That is, given a query string s and a set of all
+possible query strings, return all strings in the set that have s as a prefix.
+For example, given the query string de and the set of strings [dog, deer, deal], return
+[deer, deal].
+*/
+
+#include <stdio.h>
+
+void main (void) {
+    char arr[5][8] = {"deer",
+                      "dog", 
+                      "deal"
+                    };
+    char cmp[5] = {"de"};
+
+    for (int i = 0; i < 5; i++) {
+        char *p = arr[i];
+        int flag = 0;
+        for (int j = 0; j < 2; j++) {
+            flag = 0;
+            if (p[j] == cmp[j]){
+                flag = 1;
+            }
+            if (flag == 1) {
+                continue;
+            } else {
+                break;
+            }
+        }
+        if (flag == 1) {
+            printf("%s ", p);
+        }
+    }
+}
