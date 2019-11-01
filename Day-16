@@ -1,0 +1,39 @@
+/*
+This problem was asked by Twitter.
+You run an e-commerce website and want to record the last N order ids in a log.
+Implement a data structure to accomplish this, with the following API:
+record(order_id): adds the order_id to the log
+get_last(i): gets the ith last element from the log. i is guaranteed to be smaller
+than or equal to N.
+*/
+
+#include <stdio.h>
+
+int arr[10];
+static int i;
+int *ptr;
+
+void record (int order_id) {
+    arr[i] = order_id;
+    ptr = &arr[i];
+    i++;
+}
+
+int get_last (int i) {
+    int *ptr2 = ptr;
+    for (int j = 1; j < i; j++) {
+        ptr2--;
+    } 
+    return *ptr2;
+}
+
+void main (void) {
+    record(901);
+    record(902);   
+    record(903);
+    record(904);
+    record(905);
+
+    int i = get_last(3);
+    printf("%d ", i);
+}
